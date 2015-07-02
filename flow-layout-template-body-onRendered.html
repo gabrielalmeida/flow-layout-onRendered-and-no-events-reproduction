@@ -1,0 +1,31 @@
+<head>
+  <title>flow-router-template-body-onRendered</title>
+</head>
+
+<body>
+  <!-- 
+    Remove the whole body tag and Template.body.onRendered will never run
+  -->
+  <p>Inside Body</p>
+  {{> hello }} 
+  <hr>
+</body>
+
+<!-- This will catch body events ONLY if rendered inside body -->
+<template name="hello">
+  <p>Pizza.</p>
+  {{> love}}
+</template>
+
+
+<!-- This will catch body events ONLY if inherited from a template INSIDE body tag -->
+<template name="love">
+  <span>I love pizza</span>
+</template>
+
+
+<!-- Layout used by FlowLayout -->
+<template name="layout">
+  <p>Inside FlowLayout</p>
+  {{> Template.dynamic template=main }}
+</template>
